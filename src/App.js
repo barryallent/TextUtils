@@ -9,13 +9,13 @@ import Alert from './components/Alert';
 // happens without full page reloads, making the app feel more like a native application
 
 // Import necessary components from react-router-dom
-// BrowserRouter: Provides routing functionality to your app, alias as Router
+// HashRouter: Used for GitHub Pages deployment
+// - Uses URL hash (#) for routing
+// - Works better with static hosting
 // Routes: Container for all your routes
 // Route: Individual route definition
 // - Defines a mapping between a URL path and a component
-// - Controls what component renders at a specific URL
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import About from './components/About';
 
 // let name = "React App";
