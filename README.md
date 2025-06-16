@@ -19,7 +19,7 @@ A simple React application for text manipulation. This app allows you to perform
 
 ## Hosted URL
 
-You can view the live application at: [TextUtils on GitHub Pages](https://abhinavt.github.io/TextUtils)
+You can view the live application at: [TextUtils on GitHub Pages](https://barryallent.github.io/TextUtils)
 
 ## Getting Started
 
