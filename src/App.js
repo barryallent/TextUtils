@@ -4,6 +4,20 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
 
+// React Router is a library that enables client-side routing in React applications
+// It allows you to create a Single Page Application (SPA) where navigation
+// happens without full page reloads, making the app feel more like a native application
+
+// Import necessary components from react-router-dom
+// BrowserRouter: Provides routing functionality to your app, alias as Router
+// Routes: Container for all your routes
+// Route: Individual route definition
+// - Defines a mapping between a URL path and a component
+// - Controls what component renders at a specific URL
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import About from './components/About';
+
 // let name = "React App";
 function App() {
 
@@ -15,18 +29,18 @@ function App() {
     if (mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor = '#042743'; // Dark mode background color
-      showAlert("Dark mode has been enabled", "success");
+      // showAlert("Dark mode has been enabled", "success");
       setTimeout(() => {
         setAlert(null);
-    }, 1000);
-    document.title = "TextUtils - Dark Mode";
+      }, 1000);
+      document.title = "TextUtils - Dark Mode";
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white'; // Light mode background color
       document.title = "TextUtils";
     }
-  } 
+  }
 
   const showAlert = (message, type) => {
     setAlert({
@@ -48,16 +62,30 @@ function App() {
   // All javascript expressions must be wrapped in curly braces {} in JSX
   return (
     <>
-    <div>
-      <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode = {toggleMode}/>
-      <Alert alert={alert} />
-      <div className="container my-3" >
-        <TextForm showAlert={showAlert} heading="Enter the text to Analyze" mode={mode} />
-        {/* <About/> */}
-      </div>
-    </div>
+      {/* Router component must wrap all components that need routing functionality */}
+      <Router>
+        {/* Navbar will be shown on all pages */}
+        <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          {/* Routes component acts as a container for all your routes */}
+          <Routes>
+            {/* Route for home page (/) */}
+            {/* exact prop ensures the route matches exactly */}
+            {/* element prop specifies which component to render */}
+            <Route
+              exact path="/"
+              element={<TextForm showAlert={showAlert} heading="Enter the text to Analyze" mode={mode} />}
+            />
 
-
+            {/* Route for about page (/about) */}
+            <Route
+              exact path="/about"
+              element={<About />}
+            />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }
