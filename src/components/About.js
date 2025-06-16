@@ -1,75 +1,48 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function About() {
-    //useState is a hook that allows you to add state to a functional component
-    const [myStyle, setMyStyle] = useState( {
-        color: 'black',
-        backgroundColor: 'white',
-    });
-
-    const [btnText, setBtnText] = useState('Enable Dark Mode');
-
-    function setDarkMode() {
-        //toggle the dark mode
-        if (myStyle.color === 'white') {
-            setMyStyle({
-                color: 'black',
-                backgroundColor: 'white',
-            });
-            setBtnText('Enable Dark Mode');
-        } else {
-            setMyStyle({
-                color: 'white',
-                backgroundColor: 'black',
-            }); 
-            setBtnText('Enable Light Mode');
-        }
-    }
-    return (
-        <div className="container" style = {myStyle}>
-            <h1>About Us</h1>
-            <div className="accordion" id="accordionExample" >
-                <div className="accordion-item">
-                    <h2 className="accordion-header">
-                        <button className="accordion-button" style = {myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
-                        </button>
-                    </h2>
-                    <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div className="accordion-body" style = {myStyle}>
-                            <strong>This is the first item’s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h2 className="accordion-header">
-                        <button className="accordion-button collapsed" style = {myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div className="accordion-body" style = {myStyle}>
-                            <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h2 className="accordion-header">
-                        <button className="accordion-button collapsed" style = {myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
-                        </button>
-                    </h2>
-                    <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div className="accordion-body" style = {myStyle}>
-                            <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='container my-3' >
-                <button onClick={setDarkMode} className='btn btn-primary'>{btnText}</button>
-            </div>
-            
+export default function About(props) {
+  return (
+    <div className="container my-3">
+      <h2 className={`text-${props.mode === 'dark' ? 'light' : 'dark'}`}>About TextUtils</h2>
+      <div className={`card bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+        <div className="card-body">
+          <h5 className="card-title">Your Text Manipulation Tool</h5>
+          <p className="card-text">
+            TextUtils is a versatile text manipulation tool built with React. It helps you perform various operations on your text:
+          </p>
+          <ul className={`list-group list-group-flush bg-${props.mode === 'dark' ? 'dark' : 'light'}`}>
+            <li className={`list-group-item bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+              Convert text to UPPERCASE or lowercase
+            </li>
+            <li className={`list-group-item bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+              Remove extra spaces from your text
+            </li>
+            <li className={`list-group-item bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+              Copy text to clipboard with one click
+            </li>
+            <li className={`list-group-item bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+              Count words and characters
+            </li>
+            <li className={`list-group-item bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+              Clear text with a single button
+            </li>
+          </ul>
+          <p className="card-text mt-3">
+            Built with modern web technologies:
+          </p>
+          <ul className={`list-group list-group-flush bg-${props.mode === 'dark' ? 'dark' : 'light'}`}>
+            <li className={`list-group-item bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+              React.js for the frontend
+            </li>
+            <li className={`list-group-item bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+              Bootstrap for styling
+            </li>
+            <li className={`list-group-item bg-${props.mode === 'dark' ? 'dark' : 'light'} text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+              React Router for navigation
+            </li>
+          </ul>
         </div>
-    )
+      </div>
+    </div>
+  )
 }

@@ -3,6 +3,10 @@ import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
+import Footer from './components/Footer';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import About from './components/About';
 
 // React Router is a library that enables client-side routing in React applications
 // It allows you to create a Single Page Application (SPA) where navigation
@@ -15,8 +19,6 @@ import Alert from './components/Alert';
 // Routes: Container for all your routes
 // Route: Individual route definition
 // - Defines a mapping between a URL path and a component
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import About from './components/About';
 
 // let name = "React App";
 function App() {
@@ -81,10 +83,11 @@ function App() {
             {/* Route for about page (/about) */}
             <Route
               exact path="/about"
-              element={<About />}
+              element={<About mode={mode} />}
             />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </>
   );
