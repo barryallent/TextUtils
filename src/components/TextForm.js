@@ -56,25 +56,25 @@ export default function TextForm(props) {
     return (
         <>
             <div className='container' style={{color : props.mode==='dark'?'white':'#042743'}}>
-                <h1>{props.heading}</h1>
+                <h2>{props.heading}</h2>
                 <div className="mb-3">
                     {/* onChange is an event handler that is called when the value of the textarea changes */}
                     <textarea className="form-control" id="myBox" rows="8" onChange={handleOnChange} value={text} 
-                    style={{backgroundColor : props.mode==='dark'?'grey':'white' , color : props.mode==='dark'?'white':'#042743'}}></textarea>
+                    style={{backgroundColor : props.mode==='dark'?'#13466e':'white' , color : props.mode==='dark'?'white':'#042743'}}></textarea>
                 </div>
-                <button className="btn btn-primary mx-2" onClick={handleUpperCaseClick}>Convert to Uppecase</button>
-                <button className="btn btn-primary mx-2" onClick={handleLowerCaseClick}>Convert to Lowercase</button>
-                <button className="btn btn-primary mx-2" onClick={handleClearText}>Clear Text</button>
-                <button className="btn btn-primary mx-2" onClick={handleCopyText}>Copy Text</button>
-                <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleUpperCaseClick}>Convert to Uppecase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleLowerCaseClick}>Convert to Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleClearText}>Clear Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleCopyText}>Copy Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
             </div>
 
             <div className="container my-3" style={{color : props.mode==='dark'?'white':'#042743'}}>
                 <h1>Your Text Summary</h1>
-                <p> {text.trim().split(/\s+/).filter(word => word.length > 0).length} words and {text.length} characters </p>
-                <p> {0.008 * text.trim().split(/\s+/).filter(word => word.length > 0).length} Minutes read</p>
+                <p> {text.split(" ").filter(word => word.length > 0).length} words and {text.length} characters </p>
+                <p> {0.008 * text.split(" ").filter(word => word.length > 0).length} Minutes read</p>
                 <h3>Preview</h3>
-                <p>{text.length>0?text:"Enter something in the textbox to preview here"}</p>
+                <p>{text.length>0?text:"Nothing in preview! "}</p>
             </div>
         </>
 

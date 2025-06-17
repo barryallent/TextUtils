@@ -35,12 +35,12 @@ function App() {
       setTimeout(() => {
         setAlert(null);
       }, 1000);
-      document.title = "TextUtils - Dark Mode";
+      // document.title = "TextUtils - Dark Mode";
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white'; // Light mode background color
-      document.title = "TextUtils";
+      // document.title = "TextUtils";
     }
   }
 
@@ -77,7 +77,7 @@ function App() {
             {/* element prop specifies which component to render */}
             <Route
               exact path="/"
-              element={<TextForm showAlert={showAlert} heading="Enter the text to Analyze" mode={mode} />}
+              element={<TextForm showAlert={showAlert} heading="Try TextUtils - Word Counter, Char Counter, Remove Extra Spaces & More!" mode={mode} />}
             />
 
             {/* Route for about page (/about) */}
